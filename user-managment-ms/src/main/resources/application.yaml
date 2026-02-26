@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: user-managment-ms
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/myschema
+    username: root
+    password: metin456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db-changelog.yaml
+
+server:
+  port: 8080
+  servlet:
+    context-path: /user-managment-ms
+
+jwt:
+  access-token:
+    secret: "a-very-long-256-bit-secret-key-which-is-at-least-32-bytes-long"
+    expiration-minutes: 15
+  refresh-token:
+    expiration-days: 30
